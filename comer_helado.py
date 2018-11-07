@@ -31,7 +31,7 @@ else:
 
 
 
-esta_tu_tia = input("¿Estas con tu Tia? (Si/No): ").upper()
+esta_tu_tia = input("¿Esta tu Tia? (Si/No): ").upper()
 if esta_tu_tia == "SI":
     esta_tu_tia = "SI"
 elif esta_tu_tia == "NO":

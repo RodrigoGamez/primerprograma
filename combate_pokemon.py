@@ -1,5 +1,3 @@
-#video pokemons minuto 30 segundo 20
-
 
 
 pokemon_elegido = input("¿Contra que pokemon quieres luchar? (Squirtle/Charmander/Bulbasur): ").upper()

@@ -1,7 +1,7 @@
 #Programa para alamacenar una lista
 
 mi_lista = []
-input_usuario = input("¿Que necesitas comprar (Escribe  para salir) ?: ")
+input_usuario = input("¿Que necesitas comprar (Escribe FIN para salir) ?: ")
 
 
 #Preguntamos al usuario, que necesita comprar

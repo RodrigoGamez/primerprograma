@@ -5,4 +5,5 @@ numero = int(input("Introduce el numero de la tabla: "))
 
 
 for multiplo in range(1, 11):
-    print("{} x {} = {}".format(numero, multiplo, numero * multiplo))
+    if multiplo % 2 == 0:
+        print("{} x {} = {}".format(numero, multiplo, numero * multiplo))

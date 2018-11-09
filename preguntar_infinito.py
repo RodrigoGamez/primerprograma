@@ -1,6 +1,8 @@
 
 numeros_usuario = []
 numeros_del_usuario = ""
+lugar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+media = 0
 
 while len(numeros_usuario) < 10:
     while not numeros_del_usuario.isdigit():
@@ -10,8 +12,7 @@ while len(numeros_usuario) < 10:
 
     print("Se ha añadido un numero")
 
-numero_grande = numeros_usuario[0]
+for posicion in lugar:
+    media = media + numeros_usuario[posicion] / 10
 
-for numero in numeros_usuario:
-    if numero < numero_grande:
-        numero_grande = numero
+print("La media es: {}".format(media))

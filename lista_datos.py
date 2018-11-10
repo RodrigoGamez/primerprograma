@@ -1,10 +1,10 @@
 
 
-lista_datos = ["Hola", "a", "Valdelacalzada"]
-largo = []
+lista_datos = [9, 9, 2]
+resultado = 1
 
 
 for dato in lista_datos:
-    largo.append(len(dato))
+    resultado = resultado * dato
 
-print(largo)
+print(resultado)

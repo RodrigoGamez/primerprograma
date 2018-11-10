@@ -1,12 +1,14 @@
 #Haciendo un format con el metodo replace
 
 
-valores_sustituir = [1, 2, "hola", "adios"]
-string_cambiar = "Hola, numero {}, numero {}, {} y {}"
-cuenta_atras = [4, 3, 2, 1]
+texto_usuario = input("Introduce un texto: ")
+valor_cambiar = "E"
 
 
-for valor in valores_sustituir:
-    string_cambiar = string_cambiar.replace("{}", str(valor), 1)
+for letra in texto_usuario:
+    if letra == "A":
+        texto_usuario = texto_usuario.replace("A", valor_cambiar, 1)
+    elif letra == "a":
+        texto_usuario = texto_usuario.replace("a", valor_cambiar, 1)
 
-print(string_cambiar)
+print(texto_usuario)

@@ -1,10 +1,10 @@
 
 
-lista_datos = [2, 4, 4.5, "Hola", False, [], 9]
-lista_tipos = []
+lista_datos = ["Hola", "a", "Valdelacalzada"]
+largo = []
 
 
 for dato in lista_datos:
-    lista_tipos.append(type(dato))
+    largo.append(len(dato))
 
-print(lista_tipos)
+print(largo)

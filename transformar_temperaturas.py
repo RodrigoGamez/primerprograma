@@ -6,7 +6,7 @@ temperatura_farenheit = float(input("Introduce la temperatura a transformar: "))
 
 
 #Realizamos los calculos
-temperatura_celsius = temperatura_farenheit - 32 / 1.8
+temperatura_celsius = temperatura_farenheit * 9 / 5 - 32
 
 #Mostramos el resultado
 print("La temperatura en celsius es de: {}".format(temperatura_celsius))

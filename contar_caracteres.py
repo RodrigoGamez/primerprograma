@@ -23,6 +23,7 @@ vocales = []
 
 
 
+
 for letra in frase_usuario:
     if letra in vocales_minus:
         n_vocales_minus += 1

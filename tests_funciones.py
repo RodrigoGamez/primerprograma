@@ -1,14 +1,10 @@
 
-def ask (ask):
-    confirmacion = False
-    while not confirmacion:
-        dato = input(ask)
-        seguro = input("Has dicho {}, ¿Estas seguro? [SI / NO]".format(dato)).upper()
-        if seguro == "SI":
-            confirmacion = True
-    return dato
+def reverse_string (string_to_revrese):
+    string_reversed = ""
+    index = len(string_to_revrese) - 1
+    while index >= 0:
+        string_reversed += string_to_revrese[index]
+        index -= 1
+    return string_reversed
 
-
-print(ask("¿Como te llamas?: "))
-
-print(ask("Dime un numero"))
+print("Esta es la palabra dada la vuelta: " + reverse_string(input("Intrduce una palabra: ")))

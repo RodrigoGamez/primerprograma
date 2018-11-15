@@ -15,4 +15,5 @@ while len(numeros_usuario) < 10:
 for posicion in lugar:
     media = media + numeros_usuario[posicion] / 10
 
+
 print("La media es: {}".format(media))

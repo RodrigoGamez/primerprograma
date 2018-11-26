@@ -1,4 +1,5 @@
-#minuto 33:30 video agenda con pepinillos
+import pickle
+
 from time import sleep
 
 ACTION_ADD_CONTACT = 1
@@ -6,6 +7,8 @@ ACTION_REMOVE_CONTACT = 2
 ACTION_FIND_CONTACT = 3
 ACTION_EXPORT_CONTACT = 4
 ACTION_LEAVE = 5
+
+SAVE_FILE_NAME = "contacts.save"
 
 MENU_OPTIONS = [ACTION_ADD_CONTACT, ACTION_REMOVE_CONTACT, ACTION_FIND_CONTACT, ACTION_EXPORT_CONTACT, ACTION_LEAVE]
 
@@ -52,32 +55,31 @@ def remove_contat(contacts):
 
 def find_contact(contacts):
     print("\n\nBuscar contacto\n")
-    search_term = input("Introducir el nombre del contacto o parte de el: ")
+    search_term = input("Introducir el nombre del contacto o parte de él: ")
     found_contacts = []
 
-    print("He encontrado los siguientes contactos: ")
-    contact_index = []
+    print("He encontrado los siguientes contactos:")
+    contact_indexes = []
     contact_counter = 0
-
 
     for contact in contacts:
         if contact["name"].find(search_term) >= 0:
             found_contacts.append(contact)
             print("{} - {}".format(contact_counter, contact["name"]))
-            contact_index.append(contact_counter)
+            contact_indexes.append(contact_counter)
             contact_counter += 1
 
     contact_index = 0
 
-    if len(contact_index) > 1:
-        contact_index = ask(contact_index)
-    elif len(contact_index) == 0:
-        print("No se ha encontrado ninguno")
+    if len(contact_indexes) > 1:
+        contact_index = ask(contact_indexes)
+    elif len(contact_indexes) == 0:
+        print("No se ha encontrado ninguno.")
         return
 
-
-    print("\nInformacion sobre {}\n".format(found_contacts[contact_index]))
-    print("Nombre: {name}, Telefono: {phone}, Correo: {email}".format(**found_contacts[contact_index]))
+    print("\nInformación sobre {}\n".format(found_contacts[contact_index]["name"]))
+    print("Nombre: {name}, Telefono: {phone}, Email: {email}\n\n".format(**found_contacts[contact_index]))
+    sleep(2)
 
 
 
@@ -86,9 +88,21 @@ def exprt_contact():
     pass
 
 
+def load_contacts():
+    try:
+        contacts = pickle.load(open(SAVE_FILE_NAME, "rb"))
+    except FileNotFoundError:
+        return []
+
+
+def save_contacts(contacts):
+    with open(SAVE_FILE_NAME, "wb") as save_file:
+        pickle.dump(contacts, save_file)
+        print("Datos guardados correctamente")
+
 
 def main():
-    contacts = []
+    contacts = load_contacts()
 
     action = show_menu()
 
@@ -105,6 +119,9 @@ def main():
 
 
         action = show_menu()
+
+
+    save_contacts(contacts)
 
 
 if __name__ == "__main__":

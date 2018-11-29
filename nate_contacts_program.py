@@ -1,4 +1,6 @@
 import pickle
+from tkinter import *
+from tkinter import ttk
 
 from time import sleep
 
@@ -33,14 +35,24 @@ def show_menu():
     return ask_until_option_expected(MENU_OPTIONS)
 
 
-def add_contact(contacts):
-    print("\n\nAñadir contacto\n")
+def add_contact(contacts, name, phone, email):
+
     contact = {
-        "name": input("Nombre: "),
-        "phone": input("Teléfono: "),
-        "email": input("Email: ")
+        "name": name,
+        "phone": phone,
+        "email": email
     }
+
     contacts.append(contact)
+    print(contacts)
+    return contact
+
+
+
+def ask_new_contact(contacts):
+    print("\n\nAñadir contacto\n")
+    add_contact(contacts, input("Nombre: "), input("Teléfono: "), input("Teléfono: "))
+
     print("Se ha añadido el contacto {} correctamente\n".format(contact["name"]))
     sleep(2)
 
@@ -106,23 +118,38 @@ def print_information(list, list_index):
 
 
 def main():
-    contacts = load_contacts()
-    action = show_menu()
 
-    while action != ACTION_EXIT:
-        if action == ACTION_ADD_CONTACT:
-            add_contact(contacts)
-        elif action == ACTION_REMOVE_CONTACT:
-            find_contact(contacts, "Eliminar contacto", 0)
-        elif action == ACTION_FIND_CONTACT:
-            find_contact(contacts, "Buscar contacto:", 1)
-        elif action == ACTION_EXPORT_CONTACT:
-            export_contacts()
+    contacts = []
 
-        action = show_menu()
+    root = Tk()
+    frame_add_contact = ttk.Frame(root, padding="30 12 3 12")
+    frame_add_contact.grid()
 
-    save_contacts(contacts)
-    print("¡Adiós!")
+    frame_contact_list = ttk.Frame(root, padding="30 12 30 12")
+    frame_contact_list.grid()
+
+
+
+    name = StringVar()
+    email = StringVar()
+    phone = StringVar()
+
+
+    ttk.Label(frame_add_contact, text = "Nombre").grid(column = 1, row = 1)
+    ttk.Label(frame_add_contact, text = "Email").grid(column = 2, row = 1)
+    ttk.Label(frame_add_contact, text = "Telefono").grid(column = 3, row = 1)
+
+
+    ttk.Entry(frame_add_contact, width=7, textvariable=name).grid(column=1, row=2)
+    ttk.Entry(frame_add_contact, width=7, textvariable=email).grid(column=2, row=2)
+    ttk.Entry(frame_add_contact, width=7, textvariable=phone).grid(column=3, row=2)
+
+    ttk.Button(frame_add_contact,
+               text="Añadir",
+               comand=lambda: add_contact(contacts, name.get(), phone.get(), email.get())).grid(column=3, row=3)
+
+    root.mainloop()
+
 
 
 if __name__ == "__main__":

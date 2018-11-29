@@ -48,6 +48,14 @@ def add_contact(contacts, name, phone, email):
     return contact
 
 
+def add_contact_tk(contacts, name, phone, email, frame_contact_list):
+    contact = add_contact(contacts, name, phone, email)
+    cols, row = frame_contact_list.grid_size()
+    ttk.Label(frame_contact_list, text=contact["name"]).grid(column=1, row=row)
+    ttk.Label(frame_contact_list, text=contact["email"].grid(column=2, row=row)
+    ttk.Label(frame_contact_list, text=contact["phone"].grid(column=3, row=row)
+
+
 
 def ask_new_contact(contacts):
     print("\n\nAñadir contacto\n")
@@ -144,9 +152,15 @@ def main():
     ttk.Entry(frame_add_contact, width=7, textvariable=email).grid(column=2, row=2)
     ttk.Entry(frame_add_contact, width=7, textvariable=phone).grid(column=3, row=2)
 
+    ttk.Label(frame_add_contact, text="Nombre").grid(column=1, row=4)
+    ttk.Label(frame_add_contact, text="Email").grid(column=2, row=4)
+    ttk.Label(frame_add_contact, text="Telefono").grid(column=3, row=4)
+
+
     ttk.Button(frame_add_contact,
                text="Añadir",
-               comand=lambda: add_contact(contacts, name.get(), phone.get(), email.get())).grid(column=3, row=3)
+               command=lambda: add_contact_tk(contacts, name.get(), phone.get(), email.get(), frame_contact_list)
+               ).grid(column=3, row=3)
 
     root.mainloop()
 

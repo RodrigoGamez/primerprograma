@@ -1,3 +1,4 @@
+#50:30 pintando ventanas
 import pickle
 from tkinter import *
 from tkinter import ttk
@@ -52,8 +53,8 @@ def add_contact_tk(contacts, name, phone, email, frame_contact_list):
     contact = add_contact(contacts, name, phone, email)
     cols, row = frame_contact_list.grid_size()
     ttk.Label(frame_contact_list, text=contact["name"]).grid(column=1, row=row)
-    ttk.Label(frame_contact_list, text=contact["email"].grid(column=2, row=row)
-    ttk.Label(frame_contact_list, text=contact["phone"].grid(column=3, row=row)
+    ttk.Label(frame_contact_list, text=contact["email"]).grid(column=2, row=row)
+    ttk.Label(frame_contact_list, text=contact["phone"]).grid(column=3, row=row)
 
 
 

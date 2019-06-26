@@ -2,14 +2,13 @@ import random
 from tkinter import *
 from tkinter import ttk
 
-columna1 = [0, 11, 0, False]
+columna1 = [10, 11, 9, False]
 columna2 = [0, 6, 1, 0, False]
 columna3 = [0, 8, 0, 7, 0, False]
 columna4 = [13, 0, 0, 0, False]
 columna5 = [0, 0, 0, False]
 
 numeros = [2, 3, 4, 5, 9, 10, 12, 14, 15, 16, 17, 18, 19]
-numeros_usados_total = []
 
 
 
@@ -30,25 +29,15 @@ def definir_filas():
 
 def completar(lista):
     total = 0
-    numeros_usados = []
     while total != 38:
         for index in range(0, len(lista)-1):
             if lista[index] in numeros or lista[index] == 0:
-                numero = random.choice(numeros)
-                if numero in numeros_usados_total:
-                    pass
-                else:
-                    lista[index] = numero
-                    numeros_usados.append(numero)
+                lista[index] = random.choice(numeros)
             total += lista[index]
         print("{}           {}".format(lista, total))
         if total == 38:
             lista[-1] = True
-            numeros_usados_total.append(numeros_usados)
             break
-        else:
-            numeros_usados.clear()
-
         total = 0
 
 
